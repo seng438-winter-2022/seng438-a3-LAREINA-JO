@@ -20,6 +20,8 @@ Text…to
 
 Method: DataUtilities.calculateColumnTotal
 
+<img width="814" alt="截屏2022-03-01 下午7 17 43" src="https://user-images.githubusercontent.com/74373450/156291389-34decd1b-be43-47e5-99a6-1d7718bbafb1.png">
+
 
 the def-use sets per statement:
 L151: def={total}
@@ -45,6 +47,7 @@ list all DU-pairs per variable:
 du(1,6,total)={[1,2,3,4,6]}
 du(1,9,total)={[1,2,9],[1,2,3,5,9],[1,2,3,4,7,9]}
 du(1,3,rowCount)={[1,2,3]}
+du(2,
 
 
 # 3 A detailed description of the testing strategy for the new unit test
