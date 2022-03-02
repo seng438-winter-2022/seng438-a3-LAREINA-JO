@@ -55,6 +55,11 @@ du(3,5,row)={[3,5]}
 du(4,6,n)={[4,6]}
 du(4,7,n)={[4,7]}
 
+CalculateColumnTotalTest:
+testNullValue2DForcalculateColumnTotal(): didn't cover any DU-pairs
+testZeroValueForcalculateColumnTotal(): 
+
+
 Method: Range.constrain
 
 <img width="712" alt="截屏2022-03-01 下午10 17 46" src="https://user-images.githubusercontent.com/74373450/156300015-389ce802-f617-4979-af3e-4ee1a0f22bdf.png">
