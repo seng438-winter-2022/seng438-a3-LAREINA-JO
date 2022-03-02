@@ -14,11 +14,38 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-Text…
+Text…to
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-Text…
+Method: DataUtilities.calculateColumnTotal
+
+
+the def-use sets per statement:
+L151: def={total}
+use={}
+L152: def={rowCount}
+use={}
+L153: def={v}
+p-use={v} c-use={v}
+L154: def={row}
+c-use={v}
+L155: def={}
+p-use={row, rowCount}
+L156: def={n}
+c-use={row,column}
+L157: def={}
+p-use={n}
+L158: def={}
+c-use={total, n}
+L162: def={}
+c-use={total}
+
+list all DU-pairs per variable:
+du(1,6,total)={[1,2,3,4,6]}
+du(1,9,total)={[1,2,9],[1,2,3,5,9],[1,2,3,4,7,9]}
+du(1,3,rowCount)={[1,2,3]}
+
 
 # 3 A detailed description of the testing strategy for the new unit test
 
