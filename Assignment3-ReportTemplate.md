@@ -55,6 +55,26 @@ du(3,5,row)={[3,5]}
 du(4,6,n)={[4,6]}
 du(4,7,n)={[4,7]}
 
+Method: Range.constrain
+
+<img width="712" alt="截屏2022-03-01 下午10 17 46" src="https://user-images.githubusercontent.com/74373450/156300015-389ce802-f617-4979-af3e-4ee1a0f22bdf.png">
+
+the def-use sets per statement:
+L188: def={result}
+use={}
+L191: def={}
+c-use={result}
+L194: def={}
+c-use={result}
+L197: def={}
+c-use={result}
+
+list all DU-pairs per variable:
+du(1,3,result)={[1,2,3]}
+du(1,5,result)={[1,2,4,5]}
+du(1,7,result)={[1,7],[1,2,3,7],[1,2,4,5,7],[1,2,4,6,7]}
+
+
 
 # 3 A detailed description of the testing strategy for the new unit test
 
