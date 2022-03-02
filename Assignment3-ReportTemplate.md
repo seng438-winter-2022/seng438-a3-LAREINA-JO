@@ -47,7 +47,13 @@ list all DU-pairs per variable:
 du(1,6,total)={[1,2,3,4,6]}
 du(1,9,total)={[1,2,9],[1,2,3,5,9],[1,2,3,4,7,9]}
 du(1,3,rowCount)={[1,2,3]}
-du(2,
+du(2,3,v)={[2,3]}
+du(2,9,v)={[2,9]}
+du(2,8,v)={[2,3,4,6,8]}
+du(3,4,row)={[3,4]}
+du(3,5,row)={[3,5]}
+du(4,6,n)={[4,6]}
+du(4,7,n)={[4,7]}
 
 
 # 3 A detailed description of the testing strategy for the new unit test
