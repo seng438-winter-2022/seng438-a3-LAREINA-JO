@@ -20,59 +20,52 @@ Text…to
 
 Method: DataUtilities.calculateColumnTotal
 
-<img width="704" alt="截屏2022-03-02 下午6 09 45" src="https://user-images.githubusercontent.com/74373450/156476783-8c96898f-6a5d-4eb0-9492-74c746ae4f8c.png">
+<img width="684" alt="截屏2022-03-02 下午9 30 09" src="https://user-images.githubusercontent.com/74373450/156496442-26015bfe-4bc4-4ea7-9581-be85d5b8b2c1.png">
+
 
 the def-use sets per statement:
-L151: def={total}
+L125: def={total}
 use={}
 
-L152: def={rowCount}
+L126: def={rowCount}
 use={}
 
-L153: def={v}
-p-use={v} c-use={v}
+L127: def={r}
+p-use={r} c-use={r}
 
-L154: def={row}
-c-use={v}
+L128: def={n}
+c-use={r,column}
 
-L155: def={}
-p-use={row, rowCount}
-
-L156: def={n}
-c-use={row,column}
-
-L157: def={}
+L129: def={}
 p-use={n}
 
-L158: def={}
+L130: def={}
 c-use={total, n}
 
-L162: def={}
+L131: def={}
 c-use={total}
 
 list all DU-pairs per variable:
-du(1,6,total)={[1,2,3,4,6]}
-du(1,9,total)={[1,2,9]}
-du(1,3,rowCount)={[1,2,3]}
-du(2,3,v)={[2,3]}
-du(2,9,v)={[2,9]}
-du(2,8,v)={[2,3,4,6,8]}
-du(3,4,row)={[3,4]}
-du(3,5,row)={[3,5]}
-du(4,6,n)={[4,6]}
-du(4,7,n)={[4,7]}
+du(1,4,total)={[1,2,3,4]}
+du(1,7,total)={[1,2,7]}
+du(1,2,rowCount)={[1,2]}
+du(2,3,r)={[2,3]}
+du(2,7,r)={[2,7]}
+du(2,6,r)={[2,3,4,6]}
+du(3,4,n)={[3,4]}
+du(3,5,n)={[3,5]}
 
 CalculateColumnTotalTest:
 testNullValue2DForcalculateColumnTotal(): didn't cover any DU-pairs
 
-testZeroValueForcalculateColumnTotal(): cover all the DU-pairs except du(3,5,row)
+testZeroValueForcalculateColumnTotal(): cover all the DU-pairs
 
-testPositiveValueForcalculateColumnTotal(): cover all the DU-pairs except du(3,5,row) and du(4,7,n)
+testPositiveValueForcalculateColumnTotal(): cover all the DU-pairs except du(3,5,n)
 
-testNegativeValueForcalculateColumnTotal(): du(1,3,rowCount), du(2,3,v), du(3,4,row)
+testNegativeValueForcalculateColumnTotal(): du(1,2,rowCount), du(2,3,r)
 
 calculate the DU-Pair coverage:
-DU-Pair Coverage=9/10 * 100% = 90%
+DU-Pair Coverage=8/8 * 100% = 100%
 
 
 Method: Range.constrain
@@ -114,7 +107,9 @@ Text…
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-Text…
+DataUtilities.calculateRowTotal():
+
+
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
