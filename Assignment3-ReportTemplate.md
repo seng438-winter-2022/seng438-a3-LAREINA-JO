@@ -107,7 +107,9 @@ Text…
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-DataUtilities.calculateRowTotal():
+DataUtilities.calculateRowTotal((Values2D data, int row):
+
+Before modifying the tests for method DataUtilities.calculateRowTotal((Values2D data, int row), the branch coverage was 75%, and the method coverage and line coverage were 100%. The reason that the branch coverage was not 100% was n=null branch was missing. Therefore, adding one test case which includes a value=null can increase the branch coverage. 
 
 
 
