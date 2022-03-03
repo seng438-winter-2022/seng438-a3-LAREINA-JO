@@ -20,32 +20,39 @@ Text…to
 
 Method: DataUtilities.calculateColumnTotal
 
-<img width="814" alt="截屏2022-03-01 下午7 17 43" src="https://user-images.githubusercontent.com/74373450/156291389-34decd1b-be43-47e5-99a6-1d7718bbafb1.png">
-
+<img width="704" alt="截屏2022-03-02 下午6 09 45" src="https://user-images.githubusercontent.com/74373450/156476783-8c96898f-6a5d-4eb0-9492-74c746ae4f8c.png">
 
 the def-use sets per statement:
 L151: def={total}
 use={}
+
 L152: def={rowCount}
 use={}
+
 L153: def={v}
 p-use={v} c-use={v}
+
 L154: def={row}
 c-use={v}
+
 L155: def={}
 p-use={row, rowCount}
+
 L156: def={n}
 c-use={row,column}
+
 L157: def={}
 p-use={n}
+
 L158: def={}
 c-use={total, n}
+
 L162: def={}
 c-use={total}
 
 list all DU-pairs per variable:
 du(1,6,total)={[1,2,3,4,6]}
-du(1,9,total)={[1,2,9],[1,2,3,5,9],[1,2,3,4,7,9]}
+du(1,9,total)={[1,2,9]}
 du(1,3,rowCount)={[1,2,3]}
 du(2,3,v)={[2,3]}
 du(2,9,v)={[2,9]}
@@ -57,7 +64,15 @@ du(4,7,n)={[4,7]}
 
 CalculateColumnTotalTest:
 testNullValue2DForcalculateColumnTotal(): didn't cover any DU-pairs
-testZeroValueForcalculateColumnTotal(): 
+
+testZeroValueForcalculateColumnTotal(): cover all the DU-pairs except du(3,5,row)
+
+testPositiveValueForcalculateColumnTotal(): cover all the DU-pairs except du(3,5,row) and du(4,7,n)
+
+testNegativeValueForcalculateColumnTotal(): du(1,3,rowCount), du(2,3,v), du(3,4,row)
+
+calculate the DU-Pair coverage:
+DU-Pair Coverage=9/10 * 100% = 90%
 
 
 Method: Range.constrain
