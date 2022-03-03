@@ -94,6 +94,18 @@ du(1,3,result)={[1,2,3]}
 du(1,5,result)={[1,2,4,5]}
 du(1,7,result)={[1,7],[1,2,3,7],[1,2,4,5,7],[1,2,4,6,7]}
 
+CalculateColumnTotalTest:
+
+ContainedValue(): du(1,7,result)={[1,7]}
+
+ValueGreaterThanUpper():du(1,3,result)
+
+ValueLessThanLower(): didn't cover any DU-Pairs
+
+ValueLessThanUpperAndGreaterThanLower(): du(1,5,result)
+
+calculate the DU-Pair coverage:
+DU-Pair Coverage=3/3 * 100% = 100%
 
 
 # 3 A detailed description of the testing strategy for the new unit test
