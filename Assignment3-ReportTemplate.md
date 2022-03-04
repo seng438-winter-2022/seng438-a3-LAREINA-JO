@@ -5,7 +5,7 @@
 | Group \#:      |     |
 | -------------- | --- |
 | Student Names: |     |
-|                |     |
+| Weitao Wu      |     |
 |                |     |
 |                |     |
 
@@ -103,7 +103,7 @@ DU-Pair Coverage=3/3 * 100% = 100%
 
 # 3 A detailed description of the testing strategy for the new unit test
 
-Text…
+First of all, use the coverage tools to check the coverage of the test cases from last assignment. Line coverage, branch coverage, and method coverage can provide the hints to improve our test cases. Then, check the original code of the classes to see if our test cases check every line of the code. If not, we need to add a new test case to cover it. For example, ParamChecks.nullNotPermitted() is easy to miss in the black box testing. We could write a test case to check this line specifically. Next, draw the DFG and define all the DU-Pairs. Based on the DFG and DU-pairs, we could check through our test cases. If some branches are missing, we need to add more test cases to check them.
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
