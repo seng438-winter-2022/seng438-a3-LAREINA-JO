@@ -2,14 +2,13 @@
 
 **Lab. Report #3 – Code Coverage, Adequacy Criteria and Test Case Correlation**
 
-| Group \#:      |  9  |
+| Group \#:      | 9   |
 | -------------- | --- |
 | Student Names: |     |
 | Weitao Wu      |     |
 | Rui Guan       |     |
 | Zheng Chen     |     |
 | Brian Chen     |     |
-
 
 (Note that some labs require individual reports while others require one report
 for each group. Please see each lab document for details.)
@@ -23,7 +22,6 @@ This assignment aims to test our ability to improve our test cases using white b
 Method: DataUtilities.calculateColumnTotal
 
 <img width="684" alt="截屏2022-03-02 下午9 30 09" src="https://user-images.githubusercontent.com/74373450/156496442-26015bfe-4bc4-4ea7-9581-be85d5b8b2c1.png">
-
 
 the def-use sets per statement:
 L125: def={total}
@@ -67,8 +65,7 @@ testPositiveValueForcalculateColumnTotal(): cover all the DU-pairs except du(3,5
 testNegativeValueForcalculateColumnTotal(): du(1,2,rowCount), du(2,3,r)
 
 calculate the DU-Pair coverage:
-DU-Pair Coverage=8/8 * 100% = 100%
-
+DU-Pair Coverage=8/8 \* 100% = 100%
 
 Method: Range.constrain
 
@@ -100,8 +97,7 @@ ValueLessThanLower(): didn't cover any DU-Pairs
 ValueLessThanUpperAndGreaterThanLower(): du(1,5,result)
 
 calculate the DU-Pair coverage:
-DU-Pair Coverage=3/3 * 100% = 100%
-
+DU-Pair Coverage=3/3 \* 100% = 100%
 
 # 3 A detailed description of the testing strategy for the new unit test
 
@@ -110,19 +106,15 @@ First of all, use the coverage tools to check the coverage of the test cases fro
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
 DataUtilities.calculateRowTotal((Values2D data, int row):
-Before modifying the tests for method DataUtilities.calculateRowTotal((Values2D data, int row), the branch coverage was 75%, and the method coverage and line coverage were 100%. The reason that the branch coverage was not 100% was n=null branch was missing. Therefore, adding one test case which includes a value=null can increase the branch coverage. 
+Before modifying the tests for method DataUtilities.calculateRowTotal((Values2D data, int row), the branch coverage was 75%, and the method coverage and line coverage were 100%. The reason that the branch coverage was not 100% was n=null branch was missing. Therefore, adding one test case which includes a value=null can increase the branch coverage.
 
 DataUtilities.getCumulativePercentages(KeyedValues):
-Before modifying the test case for method getCumulativePercentages(KeyedValues), the branch coverage was 84.6%, and the method and branch coverage were 100%. The reason why brance coverage was 84.6% is that the v=null branch was not be covered. Therefore, add one more test case which has one null element (v=null) and the branch coverage becomes 100% now.
+Before modifying the test case for method getCumulativePercentages(KeyedValues), the branch coverage was 75%, and the method and branch coverage were 100%. The reason why branch coverage was 75% is that the v=null branch was not be covered. Therefore, add one more test case which has one null element (v=null) and the branch coverage becomes 100% now.
 
 DataUtilities.createNumberArray2D(double[][] data):
-Before modifying the test case for method createNumberArray2D(double[][] data), the line coverage was 75%, and the method and line coverage were 100%. The reason why brance coverage was 75% is that there should be a object which equals to null and put the object as the parameter of the function instead of just making null as the parameter. Therefore, create an object double[][] inputDoubleArray = null, and call the function as createNumberArray2D(inputDoubleArray), then the line coverage becomes 100% now.
-
-
+Before modifying the test case for method createNumberArray2D(double[][] data), the line coverage was 84.6%, and the method and line coverage were 100%. The reason why line coverage was 84.6% is that there should be a object which equals to null and put the object as the parameter of the function instead of just making null as the parameter. Therefore, create an object double[][] inputDoubleArray = null, and call the function as createNumberArray2D(inputDoubleArray), then the line coverage becomes 100% now.
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
-
-
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
@@ -138,7 +130,7 @@ At first, everyone need to modify the methods what they did in the assignment 2.
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-By comparing lab 2 with lab 3, although black box is one of the common softwafre testing method, it still has some defects. Some source codes may not be covered by the test cases. 
+By comparing lab 2 with lab 3, although black box is one of the common softwafre testing method, it still has some defects. Some source codes may not be covered by the test cases.
 
 # 10 Comments/feedback on the lab itself
 
