@@ -452,5 +452,132 @@ public class RangeTest {
     	Range expected = new Range (5 , 25);
     	assertEquals(expected, actual);
 	}
+	
+	private Range exampleRangeintersectsDouble;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+	
+	
+	@Before
+	public void intersectsDoublesetUp() throws Exception {
+		exampleRangeintersectsDouble = new Range(1.1, 5.5);
+	}
+	
+	
+	@Test
+	public void LowerBoundNotCrossingTest() {
+		assertFalse("The two ranges cross", exampleRangeintersectsDouble.intersects(0.0, 1.0));
+	}
+	
+	
+	@Test
+	public void UpperBoundNotCrossingTest() {
+		assertFalse("The two ranges cross", exampleRangeintersectsDouble.intersects(11.11, 15.15));
+	}
+	
+	
+	@Test
+	public void LowerBoundCrossingTest() {
+		assertTrue("The two ranges do not cross", exampleRangeintersectsDouble.intersects(0.0, 2.2));
+	}
+	
+	
+	@Test
+	public void UpperBoundCrossingTest() {
+		assertTrue("The two ranges do not cross", exampleRangeintersectsDouble.intersects(3.3, 12.12));
+	}
+	
+	
+	@Test
+	public void AllRangeCrossingTest() {
+		assertTrue("The two ranges do not cross", exampleRangeintersectsDouble.intersects(1.1, 5.5));
+	}
+	
+	
+	@Test
+	public void RangeCrossingInBetweenTest() {
+		assertTrue("The two ranges do not cross", exampleRangeintersectsDouble.intersects(3.3, 4.4));
+	}
+	
+	
+	
+	private Range exampleRangeintersectsRange;
+	
+	
+	
+	@Before
+	public void intersectsRangesetUp() throws Exception {
+		exampleRangeintersectsRange = new Range(1.1, 5.5);
+	}
+	
+	
+	@Test
+	public void lowerBoundNotCrossingTest() {
+		Range inputRange = new Range(0.0, 1.0);
+		assertFalse("The two ranges cross", exampleRangeintersectsRange.intersects(inputRange));
+	}
+	
+	
+	@Test
+	public void upperBoundNotCrossingTest() {
+		Range inputRange = new Range(11.11, 15.15);
+		assertFalse("The two ranges cross", exampleRangeintersectsRange.intersects(inputRange));
+	}
+	
+	
+	@Test
+	public void lowerBoundCrossingTest() {
+		Range inputRange = new Range(0.0, 2.2);
+		assertTrue("The two ranges do not cross", exampleRangeintersectsRange.intersects(inputRange));
+	}
+	
+	
+	@Test
+	public void upperBoundCrossingTest() {
+		Range inputRange = new Range(3.3, 12.12);
+		assertTrue("The two ranges do not cross", exampleRangeintersectsRange.intersects(inputRange));
+	}
+	
+	
+	@Test
+	public void allRangeCrossingTest() {
+		Range inputRange = new Range(1.1, 5.5);
+		assertTrue("The two ranges do not cross", exampleRangeintersectsRange.intersects(inputRange));
+	}
+	
+	
+	@Test
+	public void rangeCrossingInBetweenTest() {
+		Range inputRange = new Range(3.3, 4.4);
+		assertTrue("The two ranges do not cross", exampleRangeintersectsRange.intersects(inputRange));
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+	}
+	
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+	
+	private Range range11, range22;
+	
+	
+	@Test
+	public void hashcodeTwoSameRangesTest() {
+		range11 = new Range(1, 10);
+		range22 = new Range(1, 10);
+		assertEquals("Hashcode for two same ranges are not the same.", range11.hashCode(), range22.hashCode());
+	}
+	
+	
+	@Test
+	public void hashcodeTwoDifferRangestest() {
+		range11 = new Range(1, 10);
+		range22 = new Range(5, 15);
+		assertFalse("Hashcode for two different ranges are the same.", range11.hashCode() == range22.hashCode());
+	}
     
 }
