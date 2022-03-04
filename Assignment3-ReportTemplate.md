@@ -145,7 +145,9 @@ Before modifying the test case for method createNumberArray2D(double[][] data), 
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
-Text…
+We used EclEmma for our coverage tool. EclEmma provides the functionality of Lines Coverage, Branch Coverage, and Method Coverage in this assignment. EclEmma demonstrates the coverage amount and percerntage though column diagram. However, EclEmma does not provide condition coverage that we have to replace it with Method Coverage.
+
+High lines coverage make sure that the all statements were executed. It is easy to achieve but is a weak guarantee of correctness. We reach a high level branch coverage by testing all decisions that traverse the control flow with True and False values. Testing all decisions help to find algorithm problems and catch exceptions. In this lab assignment, a high method coverage can be reached easily since we wrote test cases for all methods. A high method coverage make sure we test the basic functionality of the class/method, but it does not gurantee any condition/path fault discovery.
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
@@ -153,7 +155,7 @@ Text…
 
 # 8 A discussion on how the team work/effort was divided and managed
 
-At first, everyone need to modify the methods what they did in the assignment 2. This can help us to compare the results we get between two versions. And we made a list of the unmodified methods, and picked anyone by ourselves. If any method was finished, delete it from the list.
+At first, everyone need to modify the methods what they did in the assignment 2. This can help us to compare the results we get between two versions. And we made a list of the unmodified methods, and picked anyone by ourselves. If any method was finished, delete it from the list. We covered all the methods in Range.java and DataUtilities.java.
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
