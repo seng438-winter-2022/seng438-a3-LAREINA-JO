@@ -16,7 +16,7 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-Text…to
+This assignment aims to test our ability to improve our test cases using white box testing techniques. We are required to use the coverage tool to test the coverage of the test cases from last assignment, and use the DFG and DU-pairs to write more test cases in order to increase the line coverage, branch coverage, and method coverage.
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
