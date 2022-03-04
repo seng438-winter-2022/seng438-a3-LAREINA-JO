@@ -1,4 +1,4 @@
-package org.jfree.data.test;
+package org.jfree.data;
 
 import static org.junit.Assert.*;
 import java.util.Arrays;
@@ -15,6 +15,46 @@ public class DataUtilitiesTest{
 	
     Mockery mockClass=new Mockery();
     final Values2D table=mockClass.mock(Values2D.class);
+    
+    private Mockery mockingContext1 = new Mockery();
+    private Values2D values1 = mockingContext1.mock(Values2D.class);
+    
+	 @Before
+	 public void setUpForcalculateColumnTotal() throws Exception{
+	     mockingContext1.checking(new Expectations() {
+	         {
+	             allowing(values1).getColumnCount();
+	             will(returnValue(3));
+	             allowing(values1).getRowCount();
+	             will(returnValue(3));
+	             allowing(values1).getValue(0, 0);
+	             will(returnValue(7.5));
+	             allowing(values1).getValue(1, 0);
+	             will(returnValue(2.5));
+	             allowing(values1).getValue(2, 0);
+	             will(returnValue(5.0));
+	             
+	             allowing(values1).getValue(0, 1);
+	             will(returnValue(3));
+	             allowing(values1).getValue(1, 1);
+	             will(returnValue(4));
+	             allowing(values1).getValue(2, 1);
+	             will(returnValue(null));
+	             
+	             allowing(values1).getValue(0, 2);
+	             will(returnValue(8.8));
+	             allowing(values1).getValue(1, 2);
+	             will(returnValue(8.8));
+	             allowing(values1).getValue(2, 2);
+	             will(returnValue(8.8));
+	             
+	             allowing(values1).getValue(with(any(Integer.class)), with(-1));
+	             will(throwException(new IndexOutOfBoundsException()));
+	             allowing(values1).getValue(with(-1), with(any(Integer.class)));
+	             will(throwException(new IndexOutOfBoundsException()));
+	         }
+	     });
+	 }
 
     // equal
 	@Test
@@ -255,4 +295,169 @@ public class DataUtilitiesTest{
  	     double result = DataUtilities.calculateRowTotal(values, 0);
  	     assertEquals(10.5, result, .000000001d);
  	 }
+ 	 
+	 //Test of null Value2D and regular array argument
+	 @Test(expected = IllegalArgumentException.class)
+	 public void testNullValue2DForcalculateRowTotalwithArray() {
+		 int[] arr= {0,1,2};
+	     DataUtilities.calculateRowTotal(null, 0, arr);
+	 }
+	 
+	//Tests of positive, zero, and negative column number and regular array argument
+	 @Test
+	 public void testZeroValueForcalculateRowTotalwithRegularArray() {
+		 int[] arr= {0,1,2};
+	     double result = DataUtilities.calculateRowTotal(values1, 0, arr);
+	     assertEquals(19.3, result, .000000001d);
+	 }
+	 @Test
+	 public void testPositiveValueForcalculateRowTotalwithRegularArray() {
+		 int[] arr= {0,1,2};
+	     double result = DataUtilities.calculateRowTotal(values1, 2, arr);
+	     assertEquals(13.8, result, .000000001d);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateRowTotalwithRegularArray() {
+		 int[] arr= {0,1,2};
+	     DataUtilities.calculateRowTotal(values1, -1, arr);
+	 }
+	 
+	//Tests of positive, zero, and negative column number and zero array argument
+	 @Test
+	 public void testZeroValueForcalculateRowTotalwithZeroArray() {
+		 int[] arr= {0};
+	     double result = DataUtilities.calculateRowTotal(values1, 0, arr);
+	     assertEquals(7.5, result, .000000001d);
+	 }
+	 @Test
+	 public void testPostiveValueForcalculateRowTotalwithZeroArray() {
+		 int[] arr= {0};
+	     double result = DataUtilities.calculateRowTotal(values1, 2, arr);
+	     assertEquals(5.0, result, .000000001d);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateRowTotalwithZeroArray() {
+		 int[] arr= {0};
+	     DataUtilities.calculateRowTotal(values1, -1, arr);
+	 }
+	 
+	//Tests of positive, zero, and negative column number and negative array argument
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testPositiveValueForcalculateRowTotalwithNegativeArray() {
+		 int[] arr= {-1};
+	     DataUtilities.calculateRowTotal(values1, 5, arr);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateRowTotalwithNegativeArray() {
+		 int[] arr= {-1};
+	     DataUtilities.calculateRowTotal(values1, -1, arr);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testZeroValueForcalculateRowTotalwithNegativeArray() {
+		 int[] arr= {-1};
+	     DataUtilities.calculateRowTotal(values1, 0, arr);
+	 }
+	 
+	 @Test
+	 public void testZeroValueForcalculateRowTotalwithOutBoundIndexArray() {
+		 int[] arr= {3};
+	     double result = DataUtilities.calculateRowTotal(values1, 0, arr);
+	     assertEquals(0, result, .000000001d);
+	 }
+	 
+	 //Test of null Value2D argument
+	 @Test(expected = IllegalArgumentException.class)
+	 public void testNullValue2DForcalculateColumnTotal() {
+	     DataUtilities.calculateColumnTotal(null, 0);
+	 }
+	 
+	//Tests of positive, zero, and negative column number
+	 @Test
+	 public void testZeroValueForcalculateColumnTotal() {
+	     double result = DataUtilities.calculateColumnTotal(values1, 0);
+	     assertEquals(15.0, result, .000000001d);
+	 }
+	 @Test
+	 public void testPositiveValueForcalculateColumnTotal() {
+	     double result = DataUtilities.calculateColumnTotal(values1, 1);
+	     assertEquals(7.0, result, .000000001d);
+	 }
+	 @Test
+	 public void testPositiveValueWithANullForcalculateColumnTotal() {
+	     double result = DataUtilities.calculateColumnTotal(values1, 2);
+	     assertEquals(26.4, result, .000000001d);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateColumnTotal() {
+	     DataUtilities.calculateColumnTotal(values1, -1);
+	 }
+	 
+	 //Test of null Value2D and regular array argument
+	 @Test(expected = IllegalArgumentException.class)
+	 public void testNullValue2DForcalculateColumnTotalwithArray() {
+		 int[] arr= {0,1,2};
+	     DataUtilities.calculateColumnTotal(null, 0, arr);
+	 }
+	 
+	//Tests of positive, zero, and negative column number and regular array argument
+	 @Test
+	 public void testZeroValueForcalculateColumnTotalwithRegularArray() {
+		 int[] arr= {0,1,2};
+	     double result = DataUtilities.calculateColumnTotal(values1, 0, arr);
+	     assertEquals(15.0, result, .000000001d);
+	 }
+	 @Test
+	 public void testPositiveValueForcalculateColumnTotalwithRegularArray() {
+		 int[] arr= {0,1,2};
+	     double result = DataUtilities.calculateColumnTotal(values1, 1, arr);
+	     assertEquals(7.0, result, .000000001d);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateColumnTotalwithRegularArray() {
+		 int[] arr= {0,1,2};
+	     DataUtilities.calculateColumnTotal(values1, -1, arr);
+	 }
+	 
+	//Tests of positive, zero, and negative column number and zero array argument
+	 @Test
+	 public void testZeroValueForcalculateColumnTotalwithZeroArray() {
+		 int[] arr= {0};
+	     double result = DataUtilities.calculateColumnTotal(values1, 0, arr);
+	     assertEquals(7.5, result, .000000001d);
+	 }
+	 @Test
+	 public void testPostiveValueForcalculateColumnTotalwithZeroArray() {
+		 int[] arr= {0};
+	     double result = DataUtilities.calculateColumnTotal(values1, 2, arr);
+	     assertEquals(8.8, result, .000000001d);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateColumnTotalwithZeroArray() {
+		 int[] arr= {0};
+	     DataUtilities.calculateColumnTotal(values1, -1, arr);
+	 }
+	 
+	//Tests of positive, zero, and negative column number and negative array argument
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testPositiveValueForcalculateColumnTotalwithNegativeArray() {
+		 int[] arr= {-1};
+	     DataUtilities.calculateColumnTotal(values1, 2, arr);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testNegativeValueForcalculateColumnTotalwithNegativeArray() {
+		 int[] arr= {-1};
+	     DataUtilities.calculateColumnTotal(values1, -1, arr);
+	 }
+	 @Test(expected = IndexOutOfBoundsException.class)
+	 public void testZeroValueForcalculateColumnTotalwithNegativeArray() {
+		 int[] arr= {-1};
+	     DataUtilities.calculateColumnTotal(values1, 0, arr);
+	 }
+	 
+	 @Test
+	 public void testZeroValueForcalculateColumnTotalwithOutBoundIndexArray() {
+		 int[] arr= {3};
+	     double result = DataUtilities.calculateColumnTotal(values1, 0, arr);
+	     assertEquals(0, result, .000000001d);
+	 }
 }

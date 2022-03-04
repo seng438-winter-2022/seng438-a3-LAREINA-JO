@@ -1,4 +1,4 @@
-package org.jfree.data.test;
+package org.jfree.data;
 
 import static org.junit.Assert.*;
 import org.jfree.data.Range;
@@ -337,5 +337,120 @@ public class RangeTest {
     	Range correct=new Range(-10,10);
     	assertEquals(correct, result);
     }
+    
+    //Test Expand with positive value
+    @Test
+    public void ExpandPositiveValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expand(actual, 0.5, 0.5);
+    	Range expected = new Range (-20 , 20);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test Expand with zero value
+    @Test
+    public void ExpandZeroValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expand(actual, 0, 0);
+    	Range expected = new Range (-10 , 10);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test Expand with negative value
+    @Test
+    public void ExpandNegativeValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expand(actual, -1, -1);
+    	Range expected = new Range (0 , 0);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test Expand with null value
+    @Test(expected = IllegalArgumentException.class)
+    public void ExpandNullValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expand(null, 0.5, 0.5);
+    }
+    
+    //Test ExpandToInluclude with larger value than upperbound
+    @Test
+    public void ExpandToIncludeLargerValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expandToInclude(actual, 20);
+    	Range expected = new Range (-10 , 20);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test ExpandToInluclude with middle value between bounds
+    @Test
+    public void ExpandToIncludeMiddleValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expandToInclude(actual, 0);
+    	Range expected = new Range (-10 , 10);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test ExpandToInluclude with smaller value than lowerbound
+    @Test
+    public void ExpandToIncludeSmallerValue() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expandToInclude(actual, -20);
+    	Range expected = new Range (-20 , 10);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test ExpandToInluclude with null range object
+    @Test
+    public void ExpandToIncludeNull() {
+    	Range actual = new Range(-10, 10);
+    	actual = Range.expandToInclude(null, 0);
+    	Range expected = new Range (0 , 0);
+    	assertEquals(expected, actual);
+    }
+    
+    //Test ShiftNoZeroCrossing with small value that unable to cross zero
+	@Test
+    public void ShiftNoZeroCrossingWithSmallDeltaValue() {
+		Range actual = new Range(-10, 10);
+    	actual = Range.shift(actual, 5);
+    	Range expected = new Range (-5 , 15);
+    	assertEquals(expected, actual);
+	}
+	
+	//Test ShiftNoZeroCrossing with large value that able to cross zero
+	@Test
+    public void ShiftNoZeroCrossingWithLargeDeltaValue() {
+		Range actual = new Range(-10, 10);
+    	actual = Range.shift(actual, 15);
+    	Range expected = new Range (0 , 25);
+    	assertEquals(expected, actual);
+	}
+	
+	//Test ShiftNoZeroCrossing (range with 0 initially) with large value that able to cross zero
+	@Test
+    public void ShiftZeroNoZeroCrossingWithLargeDeltaValue() {
+		Range actual = new Range(0,10);
+    	actual = Range.shift(actual, 15);
+    	Range expected = new Range (15 , 25);
+    	assertEquals(expected, actual);
+	}
+	
+	//Test ShiftZeroCrossing with small value that unable to cross zero
+	@Test
+    public void ShiftWithZeroCrossingWithSmallDeltaValue() {
+		Range actual = new Range(-10, 10);
+    	actual = Range.shift(actual, 5, true);
+    	Range expected = new Range (-5 , 15);
+    	assertEquals(expected, actual);
+	}
+	
+	//Test ShiftZeroCrossing with large value that able to cross zero
+	@Test
+    public void ShiftWithZeroCrossingWithLargeDeltaValue() {
+		Range actual = new Range(-10, 10);
+    	actual = Range.shift(actual, 15, true);
+    	Range expected = new Range (5 , 25);
+    	assertEquals(expected, actual);
+	}
     
 }
