@@ -460,4 +460,303 @@ public class DataUtilitiesTest{
 	     double result = DataUtilities.calculateColumnTotal(values1, 0, arr);
 	     assertEquals(0, result, .000000001d);
 	 }
+	 @Test
+		// This tests the method using positive integers and decimals
+		public void createNumberArrayEmptyTest() {
+			double[] inputDoubleArray = {};
+			Number[] actualArray = DataUtilities.createNumberArray(inputDoubleArray);
+			assertEquals("This array should be empty.", 0, actualArray.length);
+		}
+		
+		
+		@Test
+		// This tests the method using positive integers and decimals
+		public void createNumberArrayPositiveTest() {
+			double[] inputDoubleArray = {1.2, 3.4, 5.6, 7.8, 9.0,10};
+			Number[] actualArray = DataUtilities.createNumberArray(inputDoubleArray);
+			assertEquals(actualArray[0].doubleValue(), 1.2, 0.0000001d);
+			assertEquals(actualArray[1].doubleValue(), 3.4, 0.0000001d);
+			assertEquals(actualArray[2].doubleValue(), 5.6, 0.0000001d);
+			assertEquals(actualArray[3].doubleValue(), 7.8, 0.0000001d);
+			assertEquals(actualArray[4].doubleValue(), 9.0, 0.0000001d);
+			assertEquals(actualArray[5].doubleValue(), 10, 0.0000001d);
+		}
+		
+		@Test
+		// This tests the method using negative integers and decimals
+		public void createNumberArrayNegativeTest() {
+			double[] inputDoubleArray = {-1.2, -3.4, -5.6, -7.8, -9.0,-10};
+			Number[] actualArray = DataUtilities.createNumberArray(inputDoubleArray);
+			assertEquals(actualArray[0].doubleValue(), -1.2, 0.0000001d);
+			assertEquals(actualArray[1].doubleValue(), -3.4, 0.0000001d);
+			assertEquals(actualArray[2].doubleValue(), -5.6, 0.0000001d);
+			assertEquals(actualArray[3].doubleValue(), -7.8, 0.0000001d);
+			assertEquals(actualArray[4].doubleValue(), -9.0, 0.0000001d);
+			assertEquals(actualArray[5].doubleValue(), -10, 0.0000001d);
+		}
+		
+		@Test
+		// This tests the method using positive integers and decimals
+		public void createNumberArrayMixedTest() {
+			double[] inputDoubleArray = {1.2, -3.4, -5.6, 7.8, -9.0,10};
+			Number[] actualArray = DataUtilities.createNumberArray(inputDoubleArray);
+			assertEquals(actualArray[0].doubleValue(), 1.2, 0.0000001d);
+			assertEquals(actualArray[1].doubleValue(), -3.4, 0.0000001d);
+			assertEquals(actualArray[2].doubleValue(), -5.6, 0.0000001d);
+			assertEquals(actualArray[3].doubleValue(), 7.8, 0.0000001d);
+			assertEquals(actualArray[4].doubleValue(), -9.0, 0.0000001d);
+			assertEquals(actualArray[5].doubleValue(), 10, 0.0000001d);
+		}
+		
+		@Test
+		// This tests the method using null values, which are not permitted. Thus, it should throw an illegal argument exception.
+		public void createNumberArrayNullTest() {
+			double[] inputDoubleArray = null;
+			try {
+				Number[] actualArray = DataUtilities.createNumberArray(inputDoubleArray);
+				}catch (Exception e){
+					assertEquals("Null does not throw "
+							+ "an InvalidParameterException", InvalidParameterException.class, e.getClass());
+				}
+		}
+		
+		@Test
+		//Tests the method using positive decimals
+		public void createNumberArray2DPositiveTest() {
+			double[][] inputDoubleArray = {{1.2, 3.4}, {5.6, 7.8}, {9.0, 8.7},{10}};
+	    	Number[][] actualArray = DataUtilities.createNumberArray2D(inputDoubleArray);
+			assertEquals(actualArray[0][0].doubleValue(), 1.2, 0.0000001d);
+			assertEquals(actualArray[0][1].doubleValue(), 3.4, 0.0000001d);
+			assertEquals(actualArray[1][0].doubleValue(), 5.6, 0.0000001d);
+			assertEquals(actualArray[1][1].doubleValue(), 7.8, 0.0000001d);
+			assertEquals(actualArray[2][0].doubleValue(), 9.0, 0.0000001d);
+			assertEquals(actualArray[2][1].doubleValue(), 8.7, 0.0000001d);
+			assertEquals(actualArray[3][0].doubleValue(), 10, 0.0000001d);
+		}
+		
+		@Test
+		public void createNumberArray2DNegativeTest() {
+			double[][] inputDoubleArray = {{-1.2, -3.4}, {-5.6, -7.8}, {-9.0, -8.7},{-10}};
+	    	Number[][] actualArray = DataUtilities.createNumberArray2D(inputDoubleArray);
+			assertEquals(actualArray[0][0].doubleValue(), -1.2, 0.0000001d);
+			assertEquals(actualArray[0][1].doubleValue(), -3.4, 0.0000001d);
+			assertEquals(actualArray[1][0].doubleValue(), -5.6, 0.0000001d);
+			assertEquals(actualArray[1][1].doubleValue(), -7.8, 0.0000001d);
+			assertEquals(actualArray[2][0].doubleValue(), -9.0, 0.0000001d);
+			assertEquals(actualArray[2][1].doubleValue(), -8.7, 0.0000001d);
+			assertEquals(actualArray[3][0].doubleValue(), -10, 0.0000001d);
+		}
+		
+		@Test
+		public void createNumberArray2DMixedTest() {
+			double[][] inputDoubleArray = {{-1.2, 3.4}, {-5.6, -7.8}, {9.0, 8.7},{-10}};
+	    	Number[][] actualArray = DataUtilities.createNumberArray2D(inputDoubleArray);
+			assertEquals(actualArray[0][0].doubleValue(), -1.2, 0.0000001d);
+			assertEquals(actualArray[0][1].doubleValue(), 3.4, 0.0000001d);
+			assertEquals(actualArray[1][0].doubleValue(), -5.6, 0.0000001d);
+			assertEquals(actualArray[1][1].doubleValue(), -7.8, 0.0000001d);
+			assertEquals(actualArray[2][0].doubleValue(), 9.0, 0.0000001d);
+			assertEquals(actualArray[2][1].doubleValue(), 8.7, 0.0000001d);
+			assertEquals(actualArray[3][0].doubleValue(), -10, 0.0000001d);
+		}
+		
+		@Test
+		// This tests the method using null values, which are not permitted. Thus, it should throw an illegal argument exception.
+		public void createNumberArray2DNullTest() {
+			double[][] inputDoubleArray = null;
+			try {
+			Number[][] actualArray = DataUtilities.createNumberArray2D(inputDoubleArray);
+			}catch (Exception e){
+				assertEquals("Null does not throw "
+						+ "an InvalidParameterException", InvalidParameterException.class, e.getClass());
+			}
+		}
+		
+		private KeyedValues value1;
+		private KeyedValues value2;
+		private KeyedValues value3;
+		private KeyedValues value4;
+		private KeyedValues value5;
+		
+		@Before
+		public void getCumilativePercentageTestPositiveIntSetup() {
+			Mockery mockingContext1 = new Mockery();
+			value1 = mockingContext1.mock(KeyedValues.class);
+			mockingContext1.checking(new org.jmock.Expectations() {
+			{
+				atLeast(1).of(value1).getItemCount();
+				will(returnValue(3));
+				
+	    		atLeast(1).of(value1).getKey(0);
+	    		will(returnValue(0));
+	    		atLeast(1).of(value1).getKey(1);
+	    		will(returnValue(1));
+	    		atLeast(1).of(value1).getKey(2);
+	    		will(returnValue(2));
+	    		
+	    		atLeast(1).of(value1).getValue(0);
+				will(returnValue(3));
+				atLeast(1).of(value1).getValue(1);
+				will(returnValue(4));
+	    		atLeast(1).of(value1).getValue(2);
+				will(returnValue(5));
+			}});
+		}
+		
+		@Before
+		public void getCumilativePercentageTestPosAndNegIntSetup() {
+			Mockery mockingContext2 = new Mockery(); 
+			value2 = mockingContext2.mock(KeyedValues.class);
+			mockingContext2.checking(new Expectations() {{
+				atLeast(1).of(value2).getItemCount();
+				will(returnValue(3));
+				
+	    		atLeast(1).of(value2).getKey(0);
+	    		will(returnValue(0));
+	    		atLeast(1).of(value2).getKey(1);
+	    		will(returnValue(1));
+	    		atLeast(1).of(value2).getKey(2);
+	    		will(returnValue(2));
+	    		
+	    		atLeast(1).of(value2).getValue(0);
+				will(returnValue(2));
+				atLeast(1).of(value2).getValue(1);
+				will(returnValue(-3));
+	    		atLeast(1).of(value2).getValue(2);
+				will(returnValue(6));
+			}});
+	    }
+		
+		@Before
+		public void getCumilativePercentageTestPosAndNegDoubleSetup() {
+			Mockery mockingContext3 = new Mockery(); 
+			value3 = mockingContext3.mock(KeyedValues.class);
+			mockingContext3.checking(new Expectations() {{
+				atLeast(1).of(value3).getItemCount();
+				will(returnValue(3));
+				
+	    		atLeast(1).of(value3).getKey(0);
+	    		will(returnValue(0));
+	    		atLeast(1).of(value3).getKey(1);
+	    		will(returnValue(1));
+	    		atLeast(1).of(value3).getKey(2);
+	    		will(returnValue(2));
+	    		
+	    		atLeast(1).of(value3).getValue(0);
+				will(returnValue(2.3));
+				atLeast(1).of(value3).getValue(1);
+				will(returnValue(-3.5));
+	    		atLeast(1).of(value3).getValue(2);
+				will(returnValue(6.7));
+			}});
+	    }
+		
+		@Before
+		public void getCumilativePercentageTestPositiveDoubleSetup() {
+			Mockery mockingContext4 = new Mockery(); 
+			value4 = mockingContext4.mock(KeyedValues.class);
+			mockingContext4.checking(new Expectations() {{
+				atLeast(1).of(value4).getItemCount();
+				will(returnValue(3));
+				
+	    		atLeast(1).of(value4).getKey(0);
+	    		will(returnValue(0));
+	    		atLeast(1).of(value4).getKey(1);
+	    		will(returnValue(1));
+	    		atLeast(1).of(value4).getKey(2);
+	    		will(returnValue(2));
+	    		
+	    		atLeast(1).of(value4).getValue(0);
+				will(returnValue(9.8));
+				atLeast(1).of(value4).getValue(1);
+				will(returnValue(3.1));
+	    		atLeast(1).of(value4).getValue(2);
+				will(returnValue(6.9));
+			}});
+	    }
+		
+		
+		@Before
+		public void getCumilativePercentageTestNullSetup() {
+			Mockery mockingContext5 = new Mockery();
+			value5 = mockingContext5.mock(KeyedValues.class);
+			mockingContext5.checking(new Expectations() 
+			{
+				{
+					atLeast(1).of(value5).getItemCount();
+					will(returnValue(4));
+					
+					atLeast(1).of(value5).getKey(0);
+					will(returnValue(0));
+					atLeast(1).of(value5).getValue(0);
+					will(returnValue(2));
+					
+					atLeast(1).of(value5).getKey(1);
+					will(returnValue(1));
+					atLeast(1).of(value5).getValue(1);
+					will(returnValue(3));
+					
+					atLeast(1).of(value5).getKey(2);
+					will(returnValue(2));
+					atLeast(1).of(value5).getValue(2);
+					will(returnValue(5));
+					
+					atLeast(1).of(value5).getKey(3);
+					will(returnValue(3));
+					atLeast(1).of(value5).getValue(3);
+					will(returnValue(null));
+				}
+			});
+
+	    }
+		
+		@Test
+		public void getCumulativePercentagesPositiveIntTest() {
+			
+			KeyedValues results = DataUtilities.getCumulativePercentages(value1);
+			assertEquals(results.getValue(0).doubleValue(), 0.2500, 0.001d);
+			assertEquals(results.getValue(1).doubleValue(), 0.5833, 0.001d);
+			assertEquals(results.getValue(2).doubleValue(), 1.0000, 0.001d);
+		}
+		
+		@Test
+		public void getCumulativePercentagesPosAndNegIntTest() {
+			
+			KeyedValues results = DataUtilities.getCumulativePercentages(value2);
+			assertEquals(results.getValue(0).doubleValue(), 0.4000, 0.001d);
+			assertEquals(results.getValue(1).doubleValue(), -0.2000, 0.001d);
+			assertEquals(results.getValue(2).doubleValue(), 1.0000, 0.001d);
+		}
+		
+		@Test
+		public void getCumulativePercentagesPosAndNegDoubleTest() {
+			
+			KeyedValues results = DataUtilities.getCumulativePercentages(value3);
+			assertEquals(results.getValue(0).doubleValue(), 0.4182, 0.001d);
+			assertEquals(results.getValue(1).doubleValue(), -0.2182, 0.001d);
+			assertEquals(results.getValue(2).doubleValue(), 1.0000, 0.001d);
+		}
+		
+		@Test
+		public void getCumulativePercentagesPositiveDoubleTest() {
+			
+			KeyedValues results = DataUtilities.getCumulativePercentages(value4);
+			assertEquals(results.getValue(0).doubleValue(), 0.4949, 0.001d);
+			assertEquals(results.getValue(1).doubleValue(), 0.6515, 0.001d);
+			assertEquals(results.getValue(2).doubleValue(), 1.0000, 0.001d);
+		}
+		
+		@Test
+		public void getCumulativePercentagesNullTest() {
+			KeyedValues results = DataUtilities.getCumulativePercentages(value5);
+			assertEquals(results.getValue(0).doubleValue(), 0.2000, 0.001d);
+			assertEquals(results.getValue(1).doubleValue(), 0.5000, 0.001d);
+			assertEquals(results.getValue(2).doubleValue(), 1.0000, 0.001d);
+			try {
+				results.getValue(3).doubleValue();
+			}catch(Exception e){
+				assertEquals("Null does not throw "
+						+ "an InvalidParameterException", InvalidParameterException.class, e.getClass());
+			}
+		}
 }
