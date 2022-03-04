@@ -12,6 +12,15 @@ public class RangeTest {
     private Range exampleRange5;
     private Range exampleRange6;
     private Range exampleRange7;
+    private Range exampleRange8;
+    private Range exampleRange9;
+    private Range exampleRange10;
+    private Range exampleRange11;
+    private Range exampleRange12;
+    
+    //scale()
+    private Range range;
+	private Range range1;
     
 //    @BeforeClass public static void setUpBeforeClass() throws Exception {
 //    }
@@ -25,6 +34,15 @@ public class RangeTest {
     	exampleRange5 = new Range(Double.NaN, 1);
     	exampleRange6 = new Range(-1, Double.NaN);
     	exampleRange7 = new Range(Double.NaN, Double.NaN);
+    	exampleRange8 = new Range(-1,5); // for contain()
+    	
+    	//ToString()
+    	exampleRange9 = new Range(-5, 5); 
+    	exampleRange10 = new Range(0, 0); 
+    	exampleRange11 = new Range(5.0, 25.0); 
+    	exampleRange12 = new Range(-25, -5); 
+    	
+    	range1=new Range(-5,5);
     }
 
     
@@ -215,6 +233,109 @@ public class RangeTest {
     public void rangeEqualsItself() {
     	assertTrue("The range [-1, 1] should equal the range [-1, 1]",
     	exampleRange.equals(new Range(-1, 1)));
+    }
+    
+    //contain()
+    @Test 
+    public void containedPositivelValueShouldBeOne() { 
+    assertTrue("The contained positive value should be 1", exampleRange8.contains(1)); 
+    } 
+
+    @Test 
+    public void containedNegativelValueShouldBeNegativeOne() { 
+    assertTrue("The contained negative value should be -1", exampleRange8.contains(-1)); 
+    } 
+
+    @Test 
+    public void containedALBBlValueShouldBeZero() { 
+    assertTrue("The contained ALB value should be 0", exampleRange8.contains(0)); 
+    }
+
+    @Test 
+    public void containedAUBValue() { 
+    assertFalse("6 should not be contained", exampleRange8.contains(6)); 
+    }
+
+    @Test 
+    public void containedBLBValue() { 
+    assertFalse("-2 should not be contained", exampleRange8.contains(-2)); 
+    }
+
+    @Test 
+    public void containedBUBlValueShouldBeFour() { 
+    assertTrue("The contained BUB value should be 4", exampleRange8.contains(4)); 
+    } 
+    
+    //toString
+    @Test 
+    public void RangetoString() { 
+    assertEquals("Range[-5.0,5.0]", exampleRange9.toString()); 
+    } 
+
+    @Test 
+    public void RangeZerotoString() { 
+    assertEquals("Range[0.0,0.0]", exampleRange10.toString()); 
+    } 
+
+    @Test 
+    public void PositiveRangetoString() { 
+    assertEquals("Range[5.0,25.0]", exampleRange11.toString()); 
+    } 
+
+    @Test 
+    public void NegativeRangetoString() { 
+    assertEquals("Range[-25.0,-5.0]", exampleRange12.toString()); 
+    }
+    
+    //constrain()
+    @Test 
+    public void ContainedValue() { 
+    assertEquals(3.0, exampleRange9.constrain(3.0), .000000001d); 
+    } 
+
+    @Test 
+    public void ValueGreaterThanUpper() { 
+    assertEquals(5.0, exampleRange9.constrain(7.0), .000000001d); 
+    } 
+
+    @Test 
+    public void ValueLessThanLower() { 
+    assertEquals(-5.0, exampleRange9.constrain(-7.0), .000000001d); 
+    } 
+
+    @Test 
+    public void ValueLessThanUpperAndGreaterThanLower() { 
+    assertEquals(0.0, exampleRange9.constrain(0.0), .000000001d); 
+    } 
+    
+    //Scale()
+  //Test the null value
+    @Test(expected = IllegalArgumentException.class)
+    public void ScaleNull() {
+    	Range result=Range.scale(range,2);
+    }
+    
+    //Test the negative factor
+    @Test(expected = IllegalArgumentException.class)
+    public void ScaleWithNegativeFactor() {
+    	Range result=Range.scale(range1,-2);
+    }
+    
+    //Test the Zero factor
+    @Test
+    public void ScaleWithZeroFactor() {
+    	Range result=Range.scale(range1,0);
+    	Range correct=new Range(0,0);
+    	assertEquals(correct, result);
+    }
+    
+
+    //Test the Positive factor
+    @Test
+    public void ScaleWithPositiveFactor() {
+    	Range result=Range.scale(range1,2);
+    	Range correct=new Range(-10,10);
+    	assertEquals(correct, result);
     }
     
 }
