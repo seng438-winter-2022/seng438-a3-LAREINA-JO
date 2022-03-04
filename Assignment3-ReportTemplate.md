@@ -116,6 +116,30 @@ Before modifying the test case for method createNumberArray2D(double[][] data), 
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
+![](media/RangeBranch.png)
+
+**Figure 1 - Range Branch Coverage**
+
+![](media/RangeLine.png)
+
+**Figure 2 - Range Line Coverage**
+
+![](media/RangeMethod.png)
+
+**Figure 3 - Range Method Coverage**
+
+![](media/DataUtilitiesBranch.png)
+
+**Figure 4 - DataUtilities Branch Coverage**
+
+![](media/DataUtilitiesLine.png)
+
+**Figure 5 - DataUtilities Line Coverage**
+
+![](media/DataUtilitiesMethod.png)
+
+**Figure 6 - DataUtilities Method Coverage**
+
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
 Text…
