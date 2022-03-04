@@ -159,7 +159,7 @@ At first, everyone need to modify the methods what they did in the assignment 2.
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-By comparing lab 2 with lab 3, although black box is one of the common softwafre testing method, it still has some defects. Some source codes may not be covered by the test cases.
+By comparing lab 2 with lab 3, although black box is one of the common softwafre testing method, it still has some defects. Black box testing tests the software by the requirments of users. Tester can't know the inner logic and structure of the software. It causes that some source codes may not be covered by the test cases, and logic defects also can not be tested by test cases. White box testing can make up for these shortcomings. In white box testing, tester know what's inside the box and how it works. The white box method has a comprehensive understanding of the internal logical structure of the program and tests all logical paths. When using this scheme, the tester can check the internal structure of the program, start with checking the logic of the program, and obtain test data. Both black and white box testing are necessary for the software testing. Tester should use both methods together to test all source code as much as possible.
 
 # 10 Comments/feedback on the lab itself
 
