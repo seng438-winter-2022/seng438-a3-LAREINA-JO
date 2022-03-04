@@ -154,7 +154,8 @@ High lines coverage make sure that the all statements were executed. It is easy 
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
-Text…
+When we design the test cases of requirements-based generation, we focus on cases to test ducumented functionality and apply boundary testing on the labelled parameters. We may find major program faults. However, it is hard to test all the path and branches in this generation.
+For the coverage-based test generation, we focus on the testing all the statements and branches in the coding. It is more likely to find out run time error and catch exceptions. But since we mainly would like to increase the coverage level, we may miss some functionality testing in this generation.
 
 # 8 A discussion on how the team work/effort was divided and managed
 
