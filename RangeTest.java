@@ -579,5 +579,28 @@ public class RangeTest {
 		range22 = new Range(5, 15);
 		assertFalse("Hashcode for two different ranges are the same.", range11.hashCode() == range22.hashCode());
 	}
+	
+	@Test
+	public void getCentralValuePositiveBoundTest() {
+		assertEquals("Central value should be 6.000", 6.000,  new Range(1, 11).getCentralValue(), .000000001d);
+	}
+	
+	
+	@Test
+	public void getCentralValueNegativeBoundTest() {
+		assertEquals("Central value should be -6.000", -6.000, new Range(-11, -1).getCentralValue(), .000000001d);
+	}
+	
+	
+	@Test
+	public void getCentralValueMixedBoundTest() {
+		assertEquals("Central value should be 4.000", 4.000, new Range(-1, 9).getCentralValue(), .000000001d);
+	}
+	
+	
+	@Test
+	public void getCentralValueSameBoundTest() {
+		assertEquals("Central value should be 1.000", 1.000, new Range(1, 1).getCentralValue(), .000000001d);
+	}
     
 }
