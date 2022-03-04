@@ -110,14 +110,19 @@ First of all, use the coverage tools to check the coverage of the test cases fro
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
 DataUtilities.calculateRowTotal((Values2D data, int row):
-
 Before modifying the tests for method DataUtilities.calculateRowTotal((Values2D data, int row), the branch coverage was 75%, and the method coverage and line coverage were 100%. The reason that the branch coverage was not 100% was n=null branch was missing. Therefore, adding one test case which includes a value=null can increase the branch coverage. 
+
+DataUtilities.getCumulativePercentages(KeyedValues):
+Before modifying the test case for method getCumulativePercentages(KeyedValues), the branch coverage was 84.6%, and the method and branch coverage were 100%. The reason why brance coverage was 84.6% is that the v=null branch was not be covered. Therefore, add one more test case which has one null element (v=null) and the branch coverage becomes 100% now.
+
+DataUtilities.createNumberArray2D(double[][] data):
+Before modifying the test case for method createNumberArray2D(double[][] data), the line coverage was 75%, and the method and line coverage were 100%. The reason why brance coverage was 75% is that there should be a object which equals to null and put the object as the parameter of the function instead of just making null as the parameter. Therefore, create an object double[][] inputDoubleArray = null, and call the function as createNumberArray2D(inputDoubleArray), then the line coverage becomes 100% now.
 
 
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
-Text…
+
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
@@ -129,11 +134,11 @@ Text…
 
 # 8 A discussion on how the team work/effort was divided and managed
 
-Text…
+At first, everyone need to modify the methods what they did in the assignment 2. This can help us to compare the results we get between two versions. And we made a list of the unmodified methods, and picked anyone by ourselves. If any method was finished, delete it from the list.
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-Text…
+By comparing lab 2 with lab 3, although black box is one of the common softwafre testing method, it still has some defects. Some source codes may not be covered by the test cases. 
 
 # 10 Comments/feedback on the lab itself
 
