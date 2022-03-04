@@ -108,8 +108,11 @@ First of all, use the coverage tools to check the coverage of the test cases fro
 DataUtilities.calculateRowTotal((Values2D data, int row):
 Before modifying the tests for method DataUtilities.calculateRowTotal((Values2D data, int row), the branch coverage was 75%, and the method coverage and line coverage were 100%. The reason that the branch coverage was not 100% was n=null branch was missing. Therefore, adding one test case which includes a value=null can increase the branch coverage.
 
+DataUtilities.calculateColumnTotalwithArray(Values2D data, int column, int[] validRows):
+Before modifying the tests for method calculateColumnTotalwithArray(Values2D data, int column, int[] validRows), the branch coverage was 66.7%, and the method coverage and line coverage were 100%. The reason that the branch coverage was not 100% was n=null branch and row >= rowCount were missing. Therefore, adding test cases which includes a value=null and a out of bound row number can increase the branch coverage.
+
 DataUtilities.getCumulativePercentages(KeyedValues):
-Before modifying the test case for method getCumulativePercentages(KeyedValues), the branch coverage was 75%, and the method and branch coverage were 100%. The reason why branch coverage was 75% is that the v=null branch was not be covered. Therefore, add one more test case which has one null element (v=null) and the branch coverage becomes 100% now.
+Before modifying the test case for method getCumulativePercentages(KeyedValues), the branch coverage was 75%, and the method and line coverage were 100%. The reason why branch coverage was 75% is that the v=null branch was not be covered. Therefore, add one more test case which has one null element (v=null) and the branch coverage becomes 100% now.
 
 DataUtilities.createNumberArray2D(double[][] data):
 Before modifying the test case for method createNumberArray2D(double[][] data), the line coverage was 84.6%, and the method and line coverage were 100%. The reason why line coverage was 84.6% is that there should be a object which equals to null and put the object as the parameter of the function instead of just making null as the parameter. Therefore, create an object double[][] inputDoubleArray = null, and call the function as createNumberArray2D(inputDoubleArray), then the line coverage becomes 100% now.
