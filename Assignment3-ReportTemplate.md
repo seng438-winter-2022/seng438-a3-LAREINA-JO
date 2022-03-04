@@ -117,6 +117,9 @@ Before modifying the test case for method getCumulativePercentages(KeyedValues),
 DataUtilities.createNumberArray2D(double[][] data):
 Before modifying the test case for method createNumberArray2D(double[][] data), the line coverage was 84.6%, and the method and line coverage were 100%. The reason why line coverage was 84.6% is that there should be a object which equals to null and put the object as the parameter of the function instead of just making null as the parameter. Therefore, create an object double[][] inputDoubleArray = null, and call the function as createNumberArray2D(inputDoubleArray), then the line coverage becomes 100% now.
 
+Range.expandToInclude(Range range, double value):
+We added test cases of expandToInclude(Range range, double value) in order to increase the Range class coverage (all three metrics). This method contains several if and else branches. Thus, we added test cases that will land in all the branches. The coverage of this method used to be zero but all three metrics coverage reach 100% after the test cases are added.
+
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
 ![](media/RangeBranch.png)
