@@ -167,4 +167,4 @@ By comparing lab 2 with lab 3, although black box is one of the common softwafre
 
 # 10 Comments/feedback on the lab itself
 
-Text…
+This assignment gives us a good practise on the white box testing. The technology of using different types of coverage is also practiced. 
